@@ -17,9 +17,20 @@ class LibrariesController < ApplicationController
 	end
 
 	def edit
+		library_id = params[:id]
+		@library = Library.find_by_id(library_id)
+		render :edit
 	end
 
 	def update
+		library_id = params [:id]
+
+		library = Library.find_by_id(library_id)
+		library_params = params.require(:Library).permit(:name, :floor_count, :floor_area)
+
+		library.update_attributes(library_params)
+
+		redirect_to library_path(library)
 	end
 
 	def show
@@ -28,7 +39,11 @@ class LibrariesController < ApplicationController
 		render :show
 	end
 
-	def delete
+	def destroy
+		library_id = params[:id]
+		library = Library.find_by_id(library_id)
+		library.destroy
+		redirect_to libraries_path
 	end
 
 end
