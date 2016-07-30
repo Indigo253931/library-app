@@ -19,7 +19,16 @@ Rails.application.routes.draw do
 
   post "/libraries", to: "libraries#create"	
 
-  get "/users.:user_id/libraries", to: "library_users#index", as: "user_libraries"
-	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "/usersa/:user_id/libraries", to: "library_users#index", as: "user_libraries"
+	
+  get "/libraries/:id/edit", to: "libraries#edit", as: "edit_library"
+
+  get "/libraries/:id", to: "libraries#show", as:  "library"
+
+  put "/libraries/:id", to: "libraries#update", as: "update_library"
+
+  delete "/libraries/:id", to: "libraries#destroy", as: "destroy_library"
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
