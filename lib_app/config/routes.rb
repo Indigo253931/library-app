@@ -15,9 +15,11 @@ Rails.application.routes.draw do
 
   get "/libraries", to: "libraries#index"
 
-  get "/libraries/new", to: "libraries#new" as: "new_library"
+  get "/libraries/new", to: "libraries#new", as: "new_library"
 
   post "/libraries", to: "libraries#create"	
 
+  get "/users.:user_id/libraries", to: "library_users#index", as: "user_libraries"
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end

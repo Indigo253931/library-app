@@ -1,17 +1,34 @@
 class LibrariesController < ApplicationController
-def index
+	
+	def index
 	@libraries = Library.all 
 		render :index
-		end  
+	end  
 
-		def new 
-			@library = Library.new
-			render 
-		end
+	def new 
+	@library = Library.new
+		render :new
+	end
 
-def create
+	def create
 	library_params = params.require(:library).permit(:name, :floor_count, :floor_area)
 	@library = Library.create(library_params)
 	redirect_to "/libraries"
-end
+	end
+
+	def edit
+	end
+
+	def update
+	end
+
+	def show
+		library_id = params[:id]
+		@library = Library.find_by_id(library_id)
+		render :show
+	end
+
+	def delete
+	end
+
 end
