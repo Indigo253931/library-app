@@ -12,5 +12,12 @@ Rails.application.routes.draw do
   get "/sign_in", to: "sessions#new"
 
   post "/sessions", to: "sessions#create"
-# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get "/libraries", to: "libraries#index"
+
+  get "/libraries/new", to: "libraries#new" as: "new_library"
+
+  post "/libraries", to: "libraries#create"	
+
+	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
