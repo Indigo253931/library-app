@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 # grab the users
-  def index
+   before_action :logged_in?, only: [:show]
+
+    def index
     @users = User.all
     render :index
   end
@@ -14,8 +16,9 @@ class UsersController < ApplicationController
   def create
     user_params = params.require(:user).permit(:first_name, :last_name, :email, :password)
     @user = User.create(user_params)
+    login(@user)
 
-    redirect_to "/users"
+    redirect_to "/users/#{@user.id}"
   end
 
   def show

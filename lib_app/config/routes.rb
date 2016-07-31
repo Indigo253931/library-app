@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
    root to: "users#index"
 
+
+
   get "/users", to: "users#index", as: "users"
 
   get "/users/new", to: "users#new", as: "new_user"
@@ -17,9 +19,11 @@ Rails.application.routes.draw do
 
   get "/libraries/new", to: "libraries#new", as: "new_library"
 
-  post "/libraries", to: "libraries#create"	
+  get "/users/:user_id/libraries", to: "library_users#index", as: "user_libraries"
+  
+  post "/libraries/:library_id/users", to: "library_users#create", as: "library_users"
 
-  get "/usersa/:user_id/libraries", to: "library_users#index", as: "user_libraries"
+  post "/libraries", to: "libraries#create"	
 	
   get "/libraries/:id/edit", to: "libraries#edit", as: "edit_library"
 
