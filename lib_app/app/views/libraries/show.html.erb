@@ -1,4 +1,6 @@
-<h3><%= @library.name %></h3>
-<p><%= @library.floor_count %></p>
-<p><%= @library.floor_area %></p>
+<div>
+<h3>Name:<%= @library.name %></h3>
+<p>Floor Count:<%= @library.floor_count %></p>
+<p>Floor Area:<%= @library.floor_area %></p>
 <%= button_to "Delete", @library, method: :delete %>
+</div>

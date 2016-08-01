@@ -11,8 +11,9 @@ class LibrariesController < ApplicationController
 	end
 
 	def create
+	@library = Library.new(library_params)
+	Library.create(params[:library])
 	library_params = params.require(:library).permit(:name, :floor_count, :floor_area)
-	@library = Library.create(library_params)
 	redirect_to "/libraries"
 	end
 
@@ -45,5 +46,14 @@ class LibrariesController < ApplicationController
 		library.destroy
 		redirect_to libraries_path
 	end
+
+	 private
+    # Using a private method to encapsulate the permissible parameters
+    # is just a good pattern since you'll be able to reuse the same
+    # permit list between create and update. Also, you can specialize
+    # this method with per-user checking of permissible attributes.
+    def library_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password)
+    end
 
 end

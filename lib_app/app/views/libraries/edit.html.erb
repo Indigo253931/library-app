@@ -1,5 +1,5 @@
-<%= form_for @library do |f| %>
-<p>Name:</p><%= f.text_field :name %>
+<%= form_for @library, url "/libraries", method: "post" do |f| %>
+<p>Name:</p><%= f.text_field :name %>, 
 <p>Floor Count</p><%= f.text_field :floor_count %>
 <p>Floor Area</p><%= f.text_field :floor_area %>
 <%= f.submit "Save library" %>
