@@ -3,7 +3,8 @@
  <h3><%= library.name %></h3>
  <h3>Floor Count:<%= library.floor_count %></h3>
  <h3>Floor Area:<%= library.floor_area %></h3>
-    <% if @current_user %>
+
+    <% if current_user %>
       <%= button_to "Join", library_users_path(library) %>
     <% end %>
      <br>

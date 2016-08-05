@@ -1,5 +1,7 @@
 class LibrariesController < ApplicationController
 	
+	before_action :logged_in?, only: [:show, :new, :create, :edit, :update, :destroy]
+
 	def index
 	@libraries = Library.all 
 		render :index
